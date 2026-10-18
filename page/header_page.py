@@ -11,10 +11,6 @@ class HeaderPage(BasePage):
     def click_logo_button(self):
         self.click_button(Locators.button_header_logo)
 
-    def click_profile_button(self):
-        self.click_button(Locators.button_header_profile)
-        self.wait_load_url(url.url_profile)
-
     def click_order_feed_button(self):
         self.click_button(Locators.button_order_feed)
         self.wait_load_url(url.url_feed)

@@ -37,11 +37,6 @@ def init_login_page(driver_login_page):
     return page
 
 @pytest.fixture(scope="function")
-def init_header_page(driver_login_page):
-    page = HeaderPage(driver_login_page)
-    return page
-
-@pytest.fixture(scope="function")
-def registered_user(init_login_page, init_main_page, init_header_page):
+def driver_with_registered_user(init_login_page):
     init_login_page.login(user_data.USER_EMAIL, user_data.USER_PASSWORD)
-    return init_login_page
+    return init_login_page.driver

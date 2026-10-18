@@ -4,10 +4,10 @@ from locators.main_locators import Locators as main_locators
 
 class MainPage(BasePage):
         def wait_load_main_url(self):
-            self.wait_load_url(self, url.MAIN_PAGE_URL)
+            self.wait_load_url(url.MAIN_PAGE_URL)
 
-        def add_ingredient(self):
-            self.click_button(main_locators.button_add_ingredient)
+        def add_ingredient(self, locator=main_locators.button_add_ingredient_bun):
+            self.click_button(locator)
 
         def click_button_order(self):
              self.click_button(main_locators.button_order)
@@ -22,6 +22,7 @@ class MainPage(BasePage):
         def place_order(self):
             self.add_ingredient()
             self.click_button_order()
+            self.wait_visibility_of_element(main_locators.order_number)
             order_number = self.get_order_number()
             self.close_window_order_identifier()
             return order_number

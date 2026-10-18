@@ -33,5 +33,9 @@ class BasePage:
     def wait_load_url(self, url):
         WebDriverWait(self.driver, 10).until(expected_conditions.url_contains(url))
 
+    def invisible_element(self, locator):
+        WebDriverWait(self.driver, 3).until(expected_conditions.invisibility_of_element_located(locator))
+
     def current_url(self):
         return self.driver.current_url
+    

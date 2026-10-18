@@ -12,9 +12,9 @@ class TestHeader():
         (header_locators.button_header_constructor, urls.MAIN_PAGE_URL),
         (header_locators.button_order_feed, urls.url_feed)
     ])
-    def test_transition_to_constructor_from_profile(self, init_login_page, button_locator, url):
+    def test_header_navigation(self, init_login_page, button_locator, url):
         init_login_page.wait_to_be_clickable(button_locator)
         init_login_page.click_button(button_locator)
+        init_login_page.wait_load_url(url)
         with allure.step("Проверить текущий URL"):
-            assert init_login_page.load_url(url)
-            assert init_login_page.current_url == url
+            assert init_login_page.current_url() == url
