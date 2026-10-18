@@ -1,9 +1,6 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from locators.header_locators import Locators as header_locator
-from locators.main_locators import Locators as main_locator
-
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
@@ -13,6 +10,7 @@ class BasePage:
         return element
 
     def click_button(self, locator):
+        self.wait_to_be_clickable(locator)
         self.find_element_on_page(locator).click()
 
     def scroll_to_element(self, locator):
@@ -32,5 +30,8 @@ class BasePage:
     def wait_visibility_of_element(self, locator):
         WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(locator))
 
-    def load_url(self, url):
+    def wait_load_url(self, url):
         WebDriverWait(self.driver, 10).until(expected_conditions.url_contains(url))
+
+    def current_url(self):
+        return self.driver.current_url
