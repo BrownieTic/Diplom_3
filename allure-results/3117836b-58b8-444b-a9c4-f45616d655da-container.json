@@ -1,0 +1,1 @@
+{"uuid": "c234882b-25a7-415f-b4b7-c5f875dc5cd9", "befores": [{"name": "counter_locator", "status": "passed", "start": 1792598320284, "stop": 1792598320284}], "afters": [{"name": "counter_locator::<lambda>", "start": 1792598323572}], "start": 1792598320284, "stop": 1792598323572}

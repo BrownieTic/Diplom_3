@@ -18,14 +18,14 @@ class TestMain():
         init_main_page.open_window_ingredient_details()
         init_main_page.close_window_ingredient_details()
         with allure.step("Проверить закрытие окна деталей ингредиента"):
-            assert init_main_page.current_url() == urls.MAIN_PAGE_URL
+            assert init_main_page.get_name_igredient() == 'Краторная булка N-200i'
 
     @allure.story("Проверка счетчиков ингредиентов")
     @allure.title("Добавление ингредиентов увеличивает счетчик этих ингредиентов")
     @pytest.mark.parametrize("section, ingredient_add, counter_locator, quantity", [
-        (main_locators.button_buns_main_page, main_locators.button_add_ingredient_bun, main_locators.counter_bun_main_page, 2),
-        (main_locators.button_sauces_main_page, main_locators.button_add_ingredient_sauce, main_locators.counter_sauce_main_page, 1),
-        (main_locators.button_fillings_main_page, main_locators.button_add_ingredient_filling, main_locators.counter_filling_main_page, 1)
+        (main_locators.button_section_buns, main_locators.button_add_ingredient_bun, main_locators.counter_bun_main_page, 2),
+        (main_locators.button_section_sauces, main_locators.button_add_ingredient_sauce, main_locators.counter_sauce_main_page, 1),
+        (main_locators.button_section_fillings, main_locators.button_add_ingredient_filling, main_locators.counter_filling_main_page, 1)
     ])
     def test_add_ingredient_increases_counter_this_ingredient(self, init_main_page, section, ingredient_add, counter_locator, quantity):
         init_main_page.click_button(section)

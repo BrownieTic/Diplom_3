@@ -7,24 +7,25 @@ class Locators:
     # Кнопка Оформить заказ
     button_order = [By.XPATH, './/button[text()="Оформить заказ"]']
     # Раздел Булки
-    button_buns_main_page = [By.XPATH, './/span[text()="Булки"]/parent::div']
-    section_buns_main_page = [By.XPATH, './/h2[text()="Булки"]']
-    ingredient_bun_main_page = [ By.XPATH, '//p[text()="Краторная булка N-200i"]/parent::a']
+    button_section_buns = [By.XPATH, './/span[text()="Булки"]/parent::div']
+    start_of_section_buns = [By.XPATH, './/h2[text()="Булки"]']
+    window_bun_main_page = [By.XPATH, '//p[text()="Краторная булка N-200i"]/parent::a']
+    name_bun = [By.XPATH, '//p[text()="Краторная булка N-200i"]']
     button_add_ingredient_bun = [By.XPATH, '//li[@data-testid="ingredient-item"][.//p[text()="Краторная булка N-200i"]]//button[text()="Добавить"]']
-    counter_bun_main_page = [By.CSS_SELECTOR,'a[href*="/ingredients/643d69a5c3f7b9001cfa093c"] .counter__num']
+    counter_bun_main_page = [By.CSS_SELECTOR,'a[href="/ingredient/6acef97852135b001b21a32b"]']
     # Раздел Соусы
-    button_sauces_main_page = [By.XPATH, './/span[text()="Соусы"]/parent::div']
-    section_sauces_main_page = [By.XPATH, './/h2[text()="Соусы"]']
+    button_section_sauces = [By.XPATH, './/span[text()="Соусы"]/parent::div']
+    start_of_section_sauces = [By.XPATH, './/h2[text()="Соусы"]']
     button_add_ingredient_sauce = [By.XPATH, '//li[@data-testid="ingredient-item"][.//p[text()="Соус Spicy-X"]]//button[text()="Добавить"]']
-    counter_sauce_main_page = [By.CSS_SELECTOR,'a[href*="/ingredients/643d69a5c3f7b9001cfa0942"] .counter__num']
+    counter_sauce_main_page = [By.CSS_SELECTOR,'a[href="/ingredient/6acef97852135b001b21a332"]']
     # Раздел Начинки
-    button_fillings_main_page = [By.XPATH, './/span[text()="Начинки"]/parent::div']
-    section_fillings_main_page = [By.XPATH, './/h2[text()="Начинки"]']
+    button_section_fillings = [By.XPATH, './/span[text()="Начинки"]/parent::div']
+    start_of_section_fillings = [By.XPATH, './/h2[text()="Начинки"]']
     button_add_ingredient_filling = [By.XPATH, '//li[@data-testid="ingredient-item"][.//p[text()="Биокотлета из марсианской Магнолии"]]//button[text()="Добавить"]']
-    counter_filling_main_page = [By.CSS_SELECTOR,'a[href*="/ingredients/643d69a5c3f7b9001cfa0941"] .counter__num']
+    counter_filling_main_page = [By.CSS_SELECTOR,'a[href="/ingredient/6acef97852135b001b21a32e"]']
     # Детали ингредиента
     ingredient_details = [By.XPATH, './/h2[text()="Детали ингредиента"]']
-    button_close_ingredient_details = [By.XPATH, './/button[@class="Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK"]']
+    button_close_ingredient_details = [By.CSS_SELECTOR, "button.Modal_modal__close_modified__3V5XS.Modal_modal__close__TnseK"]
     # Окно идентификатора заказа
     button_order_identifier_close = [By.CSS_SELECTOR, '[data-testid="modal-close"]']
     order_number = [By.XPATH, '//p[contains(text(), "идентификатор заказа")]/preceding-sibling::h2']

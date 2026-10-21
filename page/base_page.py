@@ -32,7 +32,7 @@ class BasePage:
         self.find_element_on_page(locator).send_keys(text)
 
     @allure.step("Ожидать кликабельности элемента")
-    def wait_to_be_clickable(self, locator): 
+    def wait_to_be_clickable(self, locator):         
         WebDriverWait(self.driver, 3).until(expected_conditions.element_to_be_clickable(locator))
 
     @allure.step("Ожидать видимости элемента")

@@ -7,3 +7,4 @@ class Locators:
     # Поля для входа
     login_for_input_page = [By.NAME, 'name']
     password_for_input_page = [By.NAME, 'Пароль']
+    overlay = [By.CSS_SELECTOR, ".Modal_modal_overlay__x2ZCr"]

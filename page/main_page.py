@@ -9,7 +9,7 @@ class MainPage(BasePage):
             self.wait_load_url(url.MAIN_PAGE_URL)
 
         @allure.step("Открыть окно деталей ингредиента")
-        def open_window_ingredient_details(self, locator=main_locators.ingredient_bun_main_page):
+        def open_window_ingredient_details(self, locator=main_locators.window_bun_main_page):
             self.wait_to_be_clickable(locator)
             self.click_button(locator)
 
@@ -23,6 +23,10 @@ class MainPage(BasePage):
         def close_window_ingredient_details(self):
             self.wait_visibility_of_element(main_locators.button_close_ingredient_details)
             self.click_button(main_locators.button_close_ingredient_details)
+
+        @allure.step("Получить название ингридиента из секции")
+        def get_name_igredient(self, locator = main_locators.name_bun):
+            return self.get_text(locator)
 
         @allure.step("Добавить ингредиент")
         def add_ingredient(self, locator=main_locators.button_add_ingredient_bun):

@@ -9,6 +9,7 @@ from page.order_feed_page import OrderFeedPage
 from data import UserData as user_data
 
 @pytest.fixture(scope="class", params=["chrome", "firefox"])
+# @pytest.fixture(scope="class", params=["firefox"])
 def driver(request):
     if "chrome" in request.param:
         driver = webdriver.Chrome()
