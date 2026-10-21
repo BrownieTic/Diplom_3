@@ -9,7 +9,7 @@ class Locators:
     # Раздел Булки
     button_buns_main_page = [By.XPATH, './/span[text()="Булки"]/parent::div']
     section_buns_main_page = [By.XPATH, './/h2[text()="Булки"]']
-    ingredient_bun_main_page = [By.CSS_SELECTOR, 'a[href*="/ingredients/643d69a5c3f7b9001cfa093c"]']
+    ingredient_bun_main_page = [ By.XPATH, '//p[text()="Краторная булка N-200i"]/parent::a']
     button_add_ingredient_bun = [By.XPATH, '//li[@data-testid="ingredient-item"][.//p[text()="Краторная булка N-200i"]]//button[text()="Добавить"]']
     counter_bun_main_page = [By.CSS_SELECTOR,'a[href*="/ingredients/643d69a5c3f7b9001cfa093c"] .counter__num']
     # Раздел Соусы
@@ -24,7 +24,7 @@ class Locators:
     counter_filling_main_page = [By.CSS_SELECTOR,'a[href*="/ingredients/643d69a5c3f7b9001cfa0941"] .counter__num']
     # Детали ингредиента
     ingredient_details = [By.XPATH, './/h2[text()="Детали ингредиента"]']
-    button_close_ingredient_details = [By.CSS_SELECTOR, '[data-testid="modal-close"]']
+    button_close_ingredient_details = [By.XPATH, './/button[@class="Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK"]']
     # Окно идентификатора заказа
     button_order_identifier_close = [By.CSS_SELECTOR, '[data-testid="modal-close"]']
     order_number = [By.XPATH, '//p[contains(text(), "идентификатор заказа")]/preceding-sibling::h2']

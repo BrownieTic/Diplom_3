@@ -5,6 +5,7 @@ from urls import Urls as url
 from page.main_page import MainPage
 from page.login_page import LoginPage
 from page.header_page import HeaderPage
+from page.order_feed_page import OrderFeedPage
 from data import UserData as user_data
 
 @pytest.fixture(scope="class", params=["chrome", "firefox"])
@@ -40,3 +41,10 @@ def init_login_page(driver_login_page):
 def driver_with_registered_user(init_login_page):
     init_login_page.login(user_data.USER_EMAIL, user_data.USER_PASSWORD)
     return init_login_page.driver
+
+@pytest.fixture(scope="function")
+def all_pages(driver_with_registered_user):
+    header_page = HeaderPage(driver_with_registered_user)
+    main_page = MainPage(driver_with_registered_user)
+    order_feed_page = OrderFeedPage(driver_with_registered_user)
+    return header_page, main_page, order_feed_page
