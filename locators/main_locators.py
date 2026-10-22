@@ -11,21 +11,23 @@ class Locators:
     start_of_section_buns = [By.XPATH, './/h2[text()="Булки"]']
     window_bun_main_page = [By.XPATH, '//p[text()="Краторная булка N-200i"]/parent::a']
     name_bun = [By.XPATH, '//p[text()="Краторная булка N-200i"]']
-    button_add_ingredient_bun = [By.XPATH, '//li[@data-testid="ingredient-item"][.//p[text()="Краторная булка N-200i"]]//button[text()="Добавить"]']
-    counter_bun_main_page = [By.CSS_SELECTOR,'a[href="/ingredient/6acef97852135b001b21a32b"]']
+    counter_bun = [By.XPATH,'//p[text()="Краторная булка N-200i"]/preceding-sibling::div[@class="counter_counter__ZNLkj counter_default__28sqi"]/p']
     # Раздел Соусы
     button_section_sauces = [By.XPATH, './/span[text()="Соусы"]/parent::div']
     start_of_section_sauces = [By.XPATH, './/h2[text()="Соусы"]']
-    button_add_ingredient_sauce = [By.XPATH, '//li[@data-testid="ingredient-item"][.//p[text()="Соус Spicy-X"]]//button[text()="Добавить"]']
-    counter_sauce_main_page = [By.CSS_SELECTOR,'a[href="/ingredient/6acef97852135b001b21a332"]']
+    name_sauce = [By.XPATH, './/p[text()="Соус фирменный Space Sauce"]']
+    counter_sauce = [By.XPATH,'//p[text()="Соус фирменный Space Sauce"]/preceding-sibling::div[@class="counter_counter__ZNLkj counter_default__28sqi"]/p']
     # Раздел Начинки
     button_section_fillings = [By.XPATH, './/span[text()="Начинки"]/parent::div']
     start_of_section_fillings = [By.XPATH, './/h2[text()="Начинки"]']
-    button_add_ingredient_filling = [By.XPATH, '//li[@data-testid="ingredient-item"][.//p[text()="Биокотлета из марсианской Магнолии"]]//button[text()="Добавить"]']
-    counter_filling_main_page = [By.CSS_SELECTOR,'a[href="/ingredient/6acef97852135b001b21a32e"]']
-    # Детали ингредиента
+    name_filling = [By.XPATH, './/p[text()="Мясо бессмертных моллюсков Protostomia"]']
+    counter_filling_main_page = [By.XPATH,'//p[text()="Мясо бессмертных моллюсков Protostomia"]/preceding-sibling::div[@class="counter_counter__ZNLkj counter_default__28sqi"]/p']
+    # Детали ингредиента окно
     ingredient_details = [By.XPATH, './/h2[text()="Детали ингредиента"]']
     button_close_ingredient_details = [By.CSS_SELECTOR, "button.Modal_modal__close_modified__3V5XS.Modal_modal__close__TnseK"]
     # Окно идентификатора заказа
-    button_order_identifier_close = [By.CSS_SELECTOR, '[data-testid="modal-close"]']
+    button_order_identifier_close = [By.XPATH, './/button[@class="Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK"]']
+    order_loading_animation = [By.CSS_SELECTOR, '.Modal_modal__loading__3534A']
     order_number = [By.XPATH, '//p[contains(text(), "идентификатор заказа")]/preceding-sibling::h2']
+    # Секция конструктора бургера
+    section_burger_constructor = [By.XPATH, '//ul[@class="BurgerConstructor_basket__list__l9dp_"]']

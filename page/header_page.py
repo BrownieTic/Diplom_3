@@ -7,6 +7,7 @@ class HeaderPage(BasePage):
 
     @allure.step("Кликнуть по кнопке 'Конструктор'")
     def click_constructor_button(self):
+        self.invisible_element(Locators.loading_overlay)
         self.click_button(Locators.button_header_constructor)
         self.wait_load_url(url.MAIN_PAGE_URL)
 
@@ -16,5 +17,6 @@ class HeaderPage(BasePage):
 
     @allure.step("Кликнуть по кнопке 'Лента заказов'")
     def click_order_feed_button(self):
+        self.invisible_element(Locators.loading_overlay)
         self.click_button(Locators.button_order_feed)
         self.wait_load_url(url.url_feed)

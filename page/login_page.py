@@ -21,10 +21,12 @@ class LoginPage(BasePage):
 
     @allure.step("Выполнить авторизацию")
     def login(self, email, password):
+        self.wait_visibility_of_element(login_locator.login_for_input_page)
         self.enter_email(email)
         self.enter_password(password)
         self.click_login_button()
 
     @allure.step("Ожидание сокрытия оверлея")
     def overlay(self):
-        WebDriverWait(self.driver, 10).until(expected_conditions.invisibility_of_element_located(login_locator.overlay))
+        self.invisible_element(login_locator.overlay)
+        

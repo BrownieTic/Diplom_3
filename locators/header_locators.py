@@ -10,3 +10,5 @@ class Locators:
     button_header_profile = [By.CSS_SELECTOR, 'a[href*="/account"]']
     # Лента заказов
     button_order_feed = [By.XPATH, './/p[text() = "Лента Заказов"]']
+    # Оверлей
+    loading_overlay = [By.CSS_SELECTOR, '.Modal_modal_overlay__x2ZCr']

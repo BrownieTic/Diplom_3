@@ -1,5 +1,6 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.common.exceptions import StaleElementReferenceException
 import allure
 
 class BasePage:
@@ -45,7 +46,16 @@ class BasePage:
 
     @allure.step("Ожидать невидимости элемента")
     def invisible_element(self, locator):
-        WebDriverWait(self.driver, 3).until(expected_conditions.invisibility_of_element_located(locator))
+        def all_elements_invisible(driver):
+            for element in driver.find_elements(*locator):
+                try:
+                    if element.is_displayed():
+                        return False
+                except StaleElementReferenceException:
+                    continue
+            return True
+
+        WebDriverWait(self.driver, 10).until(all_elements_invisible)
 
     @allure.step("Получить текущий URL страницы")
     def current_url(self):
