@@ -38,7 +38,7 @@ class BasePage:
 
     @allure.step("Ожидать видимости элемента")
     def wait_visibility_of_element(self, locator):
-        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(locator))
+        return WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
 
     @allure.step("Ожидать загрузки страницы")
     def wait_load_url(self, url):
@@ -60,4 +60,13 @@ class BasePage:
     @allure.step("Получить текущий URL страницы")
     def current_url(self):
         return self.driver.current_url
+
+    @allure.step("Ожидание появление нужного значения")
+    def wait_text_in_element(self, text, locator):
+        WebDriverWait(self.driver, 10).until(expected_conditions.text_to_be_present_in_element(
+                    locator,
+                    text))    
+
+    def is_window_closed(self, locator):
+        return WebDriverWait(self.driver, 5).until(expected_conditions.invisibility_of_element_located(locator))
     

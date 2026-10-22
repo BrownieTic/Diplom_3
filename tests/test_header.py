@@ -13,7 +13,7 @@ class TestHeader():
         (header_locators.button_order_feed, urls.url_feed)
     ])
     def test_header_navigation(self, init_login_page, button_locator, url):
-        init_login_page.overlay()
+        init_login_page.invisible_overlay()
         init_login_page.click_button(button_locator)
         init_login_page.wait_load_url(url)
         with allure.step("Проверить текущий URL"):

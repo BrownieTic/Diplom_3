@@ -15,9 +15,8 @@ class TestMain():
     @allure.title("Закрытие окна деталей ингредиента по клику на 'X'")
     def test_click_on_x_in_ingredient_detail_close_window(self, init_main_page):
         init_main_page.open_window_ingredient_details()
-        init_main_page.close_window_ingredient_details()
         with allure.step("Проверить закрытие окна деталей ингредиента"):
-            assert init_main_page.get_name_igredient() == 'Краторная булка N-200i'
+            assert init_main_page.close_window_ingredient_details()
 
     @allure.story("Проверка счетчиков ингредиентов")
     @allure.title("Добавление ингредиентов увеличивает счетчик этих ингредиентов")

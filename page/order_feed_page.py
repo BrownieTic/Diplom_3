@@ -8,10 +8,5 @@ class OrderFeedPage(BasePage):
         @allure.step("Дождаться появления заказа в секции «В работе»")
         def get_order_number_from_progress_section(self, order_number, locator=feed_locator.section_in_progress):
             order_reference = f"0{int(order_number)}"
-            WebDriverWait(self.driver, 10).until(
-                expected_conditions.text_to_be_present_in_element(
-                    locator,
-                    order_reference
-                )
-            )
+            self.wait_text_in_element(order_reference, locator)
             return self.get_text(locator)

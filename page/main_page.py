@@ -1,8 +1,7 @@
 from page.base_page import BasePage
 from urls import Urls as url
 from locators.main_locators import Locators as main_locators
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
+
 import allure
 
 class MainPage(BasePage):
@@ -19,6 +18,7 @@ class MainPage(BasePage):
 
         @allure.step("Открыть окно деталей ингредиента")
         def open_window_ingredient_details(self, locator=main_locators.window_bun_main_page):
+            self.invisible_overlay()
             self.wait_to_be_clickable(locator)
             self.click_button(locator)
 
@@ -32,6 +32,7 @@ class MainPage(BasePage):
         def close_window_ingredient_details(self):
             self.wait_visibility_of_element(main_locators.button_close_ingredient_details)
             self.click_button(main_locators.button_close_ingredient_details)
+            return self.is_window_closed(main_locators.button_close_ingredient_details)
 
         @allure.step("Получить название ингридиента из секции")
         def get_name_igredient(self, locator = main_locators.name_bun):
@@ -62,13 +63,8 @@ class MainPage(BasePage):
                 :param source_locator: Локатор элемента, который нужно перетащить.
                 :param target_locator: Локатор элемента, куда нужно перетащить.
                 """
-                wait = WebDriverWait(self.driver, 10)
-                element_from = wait.until(
-                    expected_conditions.visibility_of_element_located(source_locator)
-                )
-                element_to = wait.until(
-                    expected_conditions.visibility_of_element_located(target_locator)
-                )
+                element_from = self.wait_visibility_of_element(source_locator)
+                element_to = self.wait_visibility_of_element(target_locator)
 
                 self.driver.execute_script("""
                     var source = arguments[0];
@@ -97,6 +93,7 @@ class MainPage(BasePage):
       
         @allure.step("Выполнение шагов оформления заказа")
         def place_order(self):
+            self.invisible_overlay()
             self.drag_and_drop()
             self.click_button_order()
             self.wait_visibility_of_element(main_locators.order_number)
