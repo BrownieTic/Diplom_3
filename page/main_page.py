@@ -56,7 +56,7 @@ class MainPage(BasePage):
             self.invisible_overlay()
             self.click_button(main_locators.button_order_identifier_close)
 
-        @allure.step("Перетаскивает элемент из source_locator в target_locator с использованием JavaScript")
+        @allure.step("Перетаскивает элемента")
         def drag_and_drop(self, source_locator = main_locators.name_bun, target_locator = main_locators.section_burger_constructor):
                 """
                 Перетаскивает элемент из source_locator в target_locator с использованием JavaScript.
@@ -66,30 +66,7 @@ class MainPage(BasePage):
                 element_from = self.wait_visibility_of_element(source_locator)
                 element_to = self.wait_visibility_of_element(target_locator)
 
-                self.driver.execute_script("""
-                    var source = arguments[0];
-                    var target = arguments[1];
-
-                    var evt = document.createEvent("DragEvent");
-                    evt.initMouseEvent("dragstart", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-                    source.dispatchEvent(evt);
-
-                    evt = document.createEvent("DragEvent");
-                    evt.initMouseEvent("dragenter", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-                    target.dispatchEvent(evt);
-
-                    evt = document.createEvent("DragEvent");
-                    evt.initMouseEvent("dragover", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-                    target.dispatchEvent(evt);
-
-                    evt = document.createEvent("DragEvent");
-                    evt.initMouseEvent("drop", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-                    target.dispatchEvent(evt);
-
-                    evt = document.createEvent("DragEvent");
-                    evt.initMouseEvent("dragend", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-                    source.dispatchEvent(evt);
-                """, element_from, element_to)
+                self.work_java(element_from, element_to)
       
         @allure.step("Выполнение шагов оформления заказа")
         def place_order(self):

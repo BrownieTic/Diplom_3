@@ -67,6 +67,33 @@ class BasePage:
                     locator,
                     text))    
 
+    @allure.step("Ожидание закрытия окна")
     def is_window_closed(self, locator):
         return WebDriverWait(self.driver, 5).until(expected_conditions.invisibility_of_element_located(locator))
-    
+
+    @allure.step("Перетаскивает элемент из source_locator в target_locator с использованием JavaScript")
+    def work_java(self, element_from, element_to):
+                    self.driver.execute_script("""
+                    var source = arguments[0];
+                    var target = arguments[1];
+
+                    var evt = document.createEvent("DragEvent");
+                    evt.initMouseEvent("dragstart", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    source.dispatchEvent(evt);
+
+                    evt = document.createEvent("DragEvent");
+                    evt.initMouseEvent("dragenter", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    target.dispatchEvent(evt);
+
+                    evt = document.createEvent("DragEvent");
+                    evt.initMouseEvent("dragover", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    target.dispatchEvent(evt);
+
+                    evt = document.createEvent("DragEvent");
+                    evt.initMouseEvent("drop", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    target.dispatchEvent(evt);
+
+                    evt = document.createEvent("DragEvent");
+                    evt.initMouseEvent("dragend", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    source.dispatchEvent(evt);
+                """, element_from, element_to)
